@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 
 function App() {
@@ -10,6 +10,7 @@ function App() {
   let [likes, addedLikes] =  useState(0);
   let [modal, setModal] = useState(false);
   let [titleIndex, setTitleIndex] = useState(0);
+  let [inputValue, changedInputValue] = useState('')
 
   return (
     <div className="App">
@@ -35,7 +36,11 @@ function App() {
           )
         })
       }
-      
+      <input onChange={(e) => { 
+        changedInputValue(e.target.value); 
+        console.log('inputValue :: ', inputValue); 
+      }} />
+
       { modal == true ? <Modal changeTitle={changeTitle} detail={title} titleIndex={titleIndex}  /> : null }
     </div>
   );
